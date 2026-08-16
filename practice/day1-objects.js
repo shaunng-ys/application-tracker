@@ -1,4 +1,4 @@
-function createApplication(
+function application(
   company,
   title,
   salaryMin,
@@ -10,11 +10,11 @@ function createApplication(
   this.title = title;
   this.salaryMin = salaryMin;
   this.salaryMax = salaryMax;
-  this.skillRequirments = skillRequirements;
+  this.skillRequirements = skillRequirements;
   this.status = status;
 }
 
-const app1 = new createApplication(
+const app1 = new application(
   "TnG Digital",
   "Junior Software Engineer",
   3800,
@@ -22,7 +22,7 @@ const app1 = new createApplication(
   ["React", "Express", "PostgreSQL"],
   "applied",
 );
-const app2 = new createApplication(
+const app2 = new application(
   "GX Bank",
   "Junior Software Engineer",
   4000,
@@ -30,7 +30,7 @@ const app2 = new createApplication(
   ["React", "Express", "PostgreSQL"],
   "applied",
 );
-const app3 = new createApplication(
+const app3 = new application(
   "Maybank",
   "Junior Software Developer",
   4000,
@@ -38,7 +38,7 @@ const app3 = new createApplication(
   ["React", "Express", "PostgreSQL"],
   "applied",
 );
-const app4 = new createApplication(
+const app4 = new application(
   "Jirnexu",
   "Junior Software Engineer",
   3850,
@@ -47,7 +47,7 @@ const app4 = new createApplication(
   "applied",
 );
 
-const app5 = new createApplication(
+const app5 = new application(
   "Ryt Bank",
   "Junior Software Engineer",
   3900,
@@ -60,7 +60,7 @@ const app5 = new createApplication(
 
 const arrayOfApplications = [app1, app2, app3, app4, app5];
 
-const app6 = new createApplication(
+const app6 = new application(
   "Shopee",
   "Junior Web Dev",
   3600,
@@ -75,7 +75,20 @@ function addApplication(targetArray, application) {
 
 addApplication(arrayOfApplications, app6);
 
-//console.log(arrayOfApplications);
+console.log(arrayOfApplications);
+
+function findApplication(companyName) {
+  function isCompany(n) {
+    if (n.company == companyName) return true;
+  }
+  let indexOfApp = arrayOfApplications.findIndex(isCompany);
+  if (indexOfApp != -1) {
+    console.log(arrayOfApplications[indexOfApp]);
+    return arrayOfApplications[indexOfApp];
+  }
+}
+
+findApplication("GX Bank");
 
 function updateAppStatus(application, newStatus) {
   application.status = newStatus;
@@ -85,17 +98,28 @@ function updateAppStatus(application, newStatus) {
 //console.log(arrayOfApplications);
 
 function removeApplication(applicationName) {
-  console.log(applicationName);
+  //console.log(applicationName);
   function isApp(n) {
     if (n == applicationName) {
       return true;
     }
   }
   let indexOfApp = arrayOfApplications.findIndex(isApp);
-  console.log(indexOfApp);
+  //console.log(indexOfApp);
   arrayOfApplications.splice(indexOfApp, 1);
 }
 
 removeApplication(app1);
 
-console.log(arrayOfApplications);
+//console.log(arrayOfApplications);
+
+const a = arrayOfApplications[0];
+const b = a;
+b.company = "Changed";
+console.log(a.company); // predict: ?
+//"Changed"
+
+const c = { ...a };
+c.company = "Different";
+console.log(a.company); // predict: ?
+//"Changed"
