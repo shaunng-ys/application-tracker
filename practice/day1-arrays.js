@@ -44,13 +44,91 @@ function double(array) {
 //console.log(double([]));
 
 //map version of exercise 14 above
-const array = [1, 2, 3, 4, 5, 6];
-//const array = [0, 10, 11, 12, 13, 14, 15, 16];
+//const array = [1, 2, 3, 4, 5, 6];
+const array = [0, 10, 11, 12, 13, 14, 15, 16];
 
 console.log(array);
 
-const doubled = array.map((num) => {
-  num * 2;
-});
+const doubled = array.map((num) => num * 2);
 
 console.log(doubled);
+
+//Task 1.4 Stage 2
+function application(
+  company,
+  title,
+  salaryMin,
+  salaryMax,
+  skillRequirements,
+  status,
+) {
+  this.company = company;
+  this.title = title;
+  this.salaryMin = salaryMin;
+  this.salaryMax = salaryMax;
+  this.skillRequirements = skillRequirements;
+  this.status = status;
+}
+
+const app1 = new application(
+  "TnG Digital",
+  "Junior Software Engineer",
+  3800,
+  5500,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+const app2 = new application(
+  "GX Bank",
+  "Junior Software Engineer",
+  4000,
+  5000,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+const app3 = new application(
+  "Maybank",
+  "Junior Software Developer",
+  4000,
+  6500,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+const app4 = new application(
+  "Jirnexu",
+  "Junior Software Engineer",
+  3850,
+  5000,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+
+const app5 = new application(
+  "Ryt Bank",
+  "Junior Software Engineer",
+  3900,
+  5750,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+
+//console.log(app5.salaryMax);
+
+const arrayOfApplications = [app1, app2, app3, app4, app5];
+
+const app6 = new application(
+  "Shopee",
+  "Junior Web Dev",
+  3600,
+  4400,
+  ["React", "Express", "PostgreSQL"],
+  "applied",
+);
+
+function addApplication(targetArray, application) {
+  targetArray.push(application);
+}
+
+addApplication(arrayOfApplications, app6);
+
+console.log(arrayOfApplications);
