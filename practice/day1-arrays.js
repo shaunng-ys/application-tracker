@@ -47,7 +47,7 @@ function double(array) {
 //const array = [1, 2, 3, 4, 5, 6];
 const array = [0, 10, 11, 12, 13, 14, 15, 16];
 
-console.log(array);
+//console.log(array);
 
 const doubled = array.map((num) => num * 2);
 
@@ -132,18 +132,112 @@ function addApplication(targetArray, application) {
 addApplication(arrayOfApplications, app6);
 
 //console.log(arrayOfApplications);
-
-const filtered = arrayOfApplications.filter((obj) => {
+/*
+//for loop version of filter array method use below
+let applicationsApplied = [];
+for (let i = 0; i <= arrayOfApplications.length - 1; i++) {
+  if (arrayOfApplications[i].status == "applied") {
+    applicationsApplied.push(arrayOfApplications[i]);
+  }
+}
+console.log(applicationsApplied);
+*/
+let filtered = arrayOfApplications.filter((obj) => {
   if (obj.status == "applied") {
     return true;
   }
 });
 
-console.log(filtered);
+//console.log(filtered);
 /*
-const unapply = arrayOfApplications.map((obj) => {
-  return (obj.status = "not applied");
-});
+//for loop version of map array method use below
+let listOfCompanies = [];
+for (let i = 0; i <= arrayOfApplications.length - 1; i++) {
+  listOfCompanies.push(arrayOfApplications[i].company);
+}
+console.log(listOfCompanies);
+*/
 
-console.log(unapply);
+let companies = arrayOfApplications.map((obj) => obj.company);
+
+//console.log(companies);
+function findApplication(arrayOfApplications, companyName) {
+  return arrayOfApplications.find((obj) => obj.company == companyName);
+}
+
+//console.log(findApplication(arrayOfApplications, "Jirnexu"));
+
+//console.log(arrayOfApplications);
+
+arrayOfApplications.sort((a, b) => b.salaryMax - a.salaryMax);
+
+//console.log(arrayOfApplications);
+/*
+//for loop version of reduce array method use below
+function statusCount(arrayOfAppliations) {
+  let appliedCount = 0;
+  let notAppliedCount = 0;
+  for (let i = 0; i <= arrayOfAppliations.length - 1; i++) {
+    if (arrayOfAppliations[i].status == "applied") {
+      appliedCount++;
+    } else if (arrayOfAppliations[i].status == "not applied") {
+      notAppliedCount++;
+    }
+  }
+  return { applied: appliedCount, "not applied": notAppliedCount };
+}
+console.log(statusCount(arrayOfApplications));
+*/
+
+function statusCount(arrayOfApplications) {
+  let appliedCount = arrayOfApplications.reduce((accumulator, currentValue) => {
+    if (currentValue.status == "applied") {
+      accumulator = accumulator + 1;
+      return accumulator;
+    } else {
+      return accumulator;
+    }
+  }, 0);
+  let unappliedCount = arrayOfApplications.reduce(
+    (accumulator, currentValue) => {
+      if (currentValue.status == "not applied") {
+        accumulator = accumulator + 1;
+        return accumulator;
+      } else {
+        return accumulator;
+      }
+    },
+    0,
+  );
+  return { applied: appliedCount, "not applied": unappliedCount };
+}
+
+//console.log(arrayOfApplications);
+
+//console.log(statusCount(arrayOfApplications));
+
+/*
+//Reduce array method in use from memory
+function showStatus(arrayOfApplications) {
+  let appliedCount = arrayOfApplications.reduce((accumulator, currentValue) => {
+    if (currentValue.status == "applied") {
+      return (accumulator = accumulator + 1);
+    } else {
+      return accumulator;
+    }
+  }, 0);
+  let notAppliedCount = arrayOfApplications.reduce(
+    (accumulator, currentValue) => {
+      if (currentValue.status == "not applied") {
+        return (accumulator = accumulator + 1);
+      } else {
+        return accumulator;
+      }
+    },
+    0,
+  );
+  return { applied: appliedCount, "not applied": notAppliedCount };
+}
+
+console.log(showStatus(arrayOfApplications));
 */
