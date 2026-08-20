@@ -51,7 +51,7 @@ console.log(array);
 
 const doubled = array.map((num) => num * 2);
 
-console.log(doubled);
+//console.log(doubled);
 
 //Task 1.4 Stage 2
 function application(
@@ -100,7 +100,7 @@ const app4 = new application(
   3850,
   5000,
   ["React", "Express", "PostgreSQL"],
-  "applied",
+  "not applied",
 );
 
 const app5 = new application(
@@ -131,4 +131,19 @@ function addApplication(targetArray, application) {
 
 addApplication(arrayOfApplications, app6);
 
-console.log(arrayOfApplications);
+//console.log(arrayOfApplications);
+
+const filtered = arrayOfApplications.filter((obj) => {
+  if (obj.status == "applied") {
+    return true;
+  }
+});
+
+console.log(filtered);
+/*
+const unapply = arrayOfApplications.map((obj) => {
+  return (obj.status = "not applied");
+});
+
+console.log(unapply);
+*/
