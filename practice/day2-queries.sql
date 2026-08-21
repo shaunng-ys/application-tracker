@@ -1,0 +1,1 @@
+SELECT * FROM applications ORDER BY applied_date DESC;
