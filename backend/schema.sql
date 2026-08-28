@@ -1,0 +1,17 @@
+CREATE TABLE applications (
+	id TEXT,
+	company TEXT,
+	role TEXT,
+	source TEXT,
+	url TEXT,
+	salary_min INT,
+	salary_max INT,
+	status TEXT,
+	applied_date DATE,
+	notes TEXT,
+	created_at DATE,
+	cv_version TEXT,
+	referral_source TEXT,
+	follow_up_date DATE,
+	user_id TEXT,
+);
