@@ -1,12 +1,33 @@
 import { useState, useEffect } from "react";
+/*
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
+*/
 import "./App.css";
 
+//Child Component
+function FillForm({ inputValue, setInputValue }) {
+  //  const [inputValue, setInputValue] = useState(``);
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+  return (
+    <div>
+      <label>
+        Company:
+        <input type="text" value={inputValue} onChange={handleChange} />
+      </label>
+      <p>Entered Text: {inputValue}</p>
+    </div>
+  );
+}
+
+//ParentComponent
 function ApplicationList() {
   const [applications, setApplications] = useState([]);
-
+  const [formData, fillForm] = useState(``);
+  //  FillForm();
   useEffect(() => {
     const getData = async () => {
       try {
@@ -34,17 +55,25 @@ function ApplicationList() {
     </>
   ));
   if (applications.length != 0) {
-    return listApplications;
-    /*
-        <li>{applications[0]}</li>
-        <li>{applications[0].company}</li>
-        <li>{applications[0].role}</li>
-        <li>{applications[0].status}</li>
-		*/
+    return (
+      <>
+        <div>
+          <label>
+            New Application
+            <FillForm inputValue={formData} setInputValue={fillForm} />
+          </label>
+          <p>Entered Company: {formData}</p>
+        </div>
+        <div>{listApplications}</div>
+      </>
+    );
   }
 }
 
 export default ApplicationList;
+
+//export default FillForm;
+
 /*
 function App() {
   const [count, setCount] = useState(0);
